@@ -30,15 +30,33 @@ const Registr: React.FC = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords don't match");
+      alert("Пароли не одинаковы");
       return;
     }
     console.log('Form submitted:', formData);
     // Здесь можно добавить логику отправки данных на сервер
     // пост запрос, при удачном выполнении редирект на вход
-    
+    //handleReg({formData});
     navigate('/Login');
   };
+  /*const handleReg = async ({username, email, password}) => {
+    try {
+      // Здесь можно добавить логику отправки данных на сервер
+      const response = await axios.post('https://your-api-url.com/reg', {
+        username,
+        email,
+        password,
+      });
+
+      // Пример обработки ответа сервера
+      if (response.status === 200) {
+        // Перенаправляем пользователя на страницу входа
+        navigate('/Login');
+      }
+    } catch (error) {
+      console.error('Ошибка при регистрации:', error);
+    }
+  };*/
 
   return (
    <div className='reg' > 

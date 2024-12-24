@@ -26,8 +26,8 @@ const LogIn: React.FC = () => {
     console.log('Form submitted:', formData);
     // Здесь можно добавить логику отправки данных на сервер
     //handleLogin(formData.login, formData.password);
-    navigate('/');
-    loginContext('ghj')
+    navigate('/main');
+    loginContext('ghj', formData.login)
   };
 
   const authContext = useContext(AuthContext);

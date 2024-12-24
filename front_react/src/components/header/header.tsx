@@ -14,7 +14,8 @@ function Header  ()  {
       throw new Error('AuthContext is not provided');
     }
   
-    const { isAuthenticated, username, loginContext, logoutContext } = authContext;
+    const { isAuthenticated, username, logoutContext } = authContext;
+    
   return (
     <>
     <header>
@@ -42,7 +43,8 @@ function Header  ()  {
       <div className="auth-section" >
         <FontAwesomeIcon icon={faCircleUser} />
 
-        {isAuthenticated ?<> <span> {username}</span> <button  onClick={logoutContext}> Выход</button></>: <Link to = '/Login'><button> Выполните вход</button></Link>}
+        {isAuthenticated ?<> <span style={{margin: '5px'}}> {username}</span> <button  onClick={logoutContext}> Выход</button></>: <Link to = '/Login'><button> Выполните вход</button></Link>}
+        
       </div>
     </header></>
   );

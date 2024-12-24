@@ -5,7 +5,7 @@ import React, { createContext, useState, useEffect, ReactNode } from 'react';
 interface AuthContextType {
   isAuthenticated: boolean;
   username: string;
-  loginContext: (token: string) => void;
+  loginContext: (token: string, username?: string) => void;
   logoutContext: () => void;
 }
 
@@ -23,16 +23,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   useEffect(() => {
     // Пример проверки авторизации при загрузке приложения
     const token = localStorage.getItem('token');
+    const storedUsername = localStorage.getItem('username');
     if (token) {
       setIsAuthenticated(true);
     }
+
+    if (storedUsername) {
+      setUsername(storedUsername); 
+    }
   }, []);
 
-  const loginContext = (token: string) => {
+  const loginContext = (token: string, username: string = 'Default Name') => {
     // Пример логики авторизации
     localStorage.setItem('token', token);
+    localStorage.setItem('username', username);
     setIsAuthenticated(true);
-    setUsername('userName');
+    setUsername(username);
+    
   };
 
   const logoutContext = () => {
